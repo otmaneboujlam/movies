@@ -1,9 +1,10 @@
 import style from './MovieItem.module.scss'
 
-function MovieItem({ movie }: any) {
+function MovieItem({ movie, updateSelectedMovie }: any) {
     return (
         <div
             style={{ cursor: 'pointer' }}
+            onClick={() => updateSelectedMovie(movie._id)}
             data-bs-target="#movie-details-modal"
             data-bs-toggle="modal"
             className={`card text-center m-2 ${style.card}`}>
