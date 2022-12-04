@@ -5,25 +5,35 @@ import Loading from './components/Loading/Loading';
 import MovieDetails from './features/movies/components/MovieDetails/MovieDetails';
 import MovieList from './features/movies/components/MovieList/MovieList';
 import data from './utils/data.json'
-import  {Movie}  from './features/movies/models/Movie'
+import { Movie } from './features/movies/models/Movie'
 
 function App() {
+  const movieVide: Movie = 
+  {
+    "_id": "",
+    "title": "",
+    "img": "",
+    "details": "",
+    "desc": ""
+  }
+  
   //const [movies, setMovies] = useState<Movie[]>(data.movies)
-  const [selectedMovie, setSelectedMovie] = useState<Movie>(data.movies[0])
+  const [selectedMovie, setSelectedMovie] = useState<Movie>(movieVide)
 
-  function updateSelectedMovie(movie : Movie) {
+  function updateSelectedMovie(movie: Movie) {
     setSelectedMovie(movie)
   }
+
   return (
     <div className="app">
       <Header />
-      { data.movies.length ? 
-      <>
-      <MovieList movies = {data.movies} updateSelectedMovie = {updateSelectedMovie}/>
-      <MovieDetails selectedMovie={selectedMovie} />
-      </> 
-      : 
-      <Loading />
+      {data.movies.length ?
+        <>
+          <MovieList movies={data.movies} updateSelectedMovie={updateSelectedMovie} />
+          <MovieDetails selectedMovie={selectedMovie} />
+        </>
+        :
+        <Loading />
       }
     </div>
   )
