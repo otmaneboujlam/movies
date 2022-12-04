@@ -8,12 +8,11 @@ import data from './utils/data.json'
 import  {Movie}  from './features/movies/models/Movie'
 
 function App() {
-  const [selectedMovie, SetSelectedMovie] = useState<Movie|undefined>(data.movies[0])
+  //const [movies, setMovies] = useState<Movie[]>(data.movies)
+  const [selectedMovie, setSelectedMovie] = useState<Movie>(data.movies[0])
 
-  function updateSelectedMovie(id : string) {
-    SetSelectedMovie(
-      data.movies.find(movie => movie._id === id)
-    )
+  function updateSelectedMovie(movie : Movie) {
+    setSelectedMovie(movie)
   }
   return (
     <div className="app">
@@ -21,7 +20,7 @@ function App() {
       { data.movies.length ? 
       <>
       <MovieList movies = {data.movies} updateSelectedMovie = {updateSelectedMovie}/>
-      {selectedMovie && <MovieDetails selectedMovie={selectedMovie} />}
+      <MovieDetails selectedMovie={selectedMovie} />
       </> 
       : 
       <Loading />

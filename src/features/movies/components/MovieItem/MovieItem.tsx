@@ -10,7 +10,7 @@ function MovieItem({ movie, updateSelectedMovie }: MovieItemProps) {
     return (
         <div
             style={{ cursor: 'pointer' }}
-            onClick={() => updateSelectedMovie(movie._id)}
+            onClick={() => updateSelectedMovie(movie)}
             data-bs-target="#movie-details-modal"
             data-bs-toggle="modal"
             className={`card text-center m-2 ${style.card}`}>
