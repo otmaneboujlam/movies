@@ -1,6 +1,11 @@
+import { Movie } from '../../models/Movie'
 import style from './MovieDetails.module.scss'
 
-function MovieDetails({selectedMovie} : any) {
+interface MovieDetailsProps {
+  selectedMovie: Movie
+}
+
+function MovieDetails({selectedMovie} : MovieDetailsProps) {
     return (
         <div id="movie-details-modal" className="modal fade">
           <div className="modal-dialog">
@@ -15,7 +20,6 @@ function MovieDetails({selectedMovie} : any) {
                 <h5>{ selectedMovie?.details }</h5>
                 <p>{ selectedMovie?.desc }</p>
               </div>
-    
             </div>
           </div>
         </div>

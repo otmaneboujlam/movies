@@ -1,6 +1,12 @@
+import { Movie } from '../../models/Movie'
 import style from './MovieItem.module.scss'
 
-function MovieItem({ movie, updateSelectedMovie }: any) {
+interface MovieItemProps {
+    movie: Movie
+    updateSelectedMovie: Function
+}
+
+function MovieItem({ movie, updateSelectedMovie }: MovieItemProps) {
     return (
         <div
             style={{ cursor: 'pointer' }}
