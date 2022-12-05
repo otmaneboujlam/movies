@@ -5,7 +5,7 @@ import Loading from './components/Loading/Loading';
 import MovieDetails from './features/movies/components/MovieDetails/MovieDetails';
 import MovieList from './features/movies/components/MovieList/MovieList';
 import { Movie } from './features/movies/models/Movie'
-import { urlApiMovies } from './conf/api.movies'
+import { apiMovieMap, urlApiMovies } from './conf/api.movies'
 
 function App() {
   const movieVide: Movie = 
@@ -26,13 +26,7 @@ function App() {
       .catch(console.error)
       .then(moviesFromAPI => {
         if (!moviesFromAPI) throw new Error("Pas de fims !")
-        const movies = moviesFromAPI.map((m: any) => new Movie(
-          String(m.id),
-          m.title,
-          `${m.release_date} | ${m.vote_average} (${m.vote_count})`,
-          m.overview,
-          `https://image.tmdb.org/t/p/w500${m.poster_path}`
-        ));
+        const movies = apiMovieMap(moviesFromAPI);
         setMovies(movies)
       })
   }
