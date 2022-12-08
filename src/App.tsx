@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 import style from './App.module.scss';
 import Header from './components/Header/Header';
-import Loading from './components/Loading/Loading';
-import MovieDetails from './features/movies/components/MovieDetails/MovieDetails';
-import MovieList from './features/movies/components/MovieList/MovieList';
 import { Movie } from './features/movies/models/Movie'
 import { apiMovieMap, urlApiMovies } from './conf/api.movies'
-import SearchBar from './features/movies/components/SearchBar/SearchBar';
+import Movies from './features/movies/components/Movies/Movies';
 
 function App() {
   const movieVide: Movie = 
@@ -45,17 +42,12 @@ function App() {
   return (
     <div className="app">
       <Header />
-      {movies.length ?
-        <>
-          <div className="d-flex justify-content-center p-4">
-            <SearchBar updateSetMovies = {updateSetMovies}/>
-          </div>
-          <MovieList movies={movies} updateSelectedMovie={updateSelectedMovie} />
-          <MovieDetails selectedMovie={selectedMovie} />
-        </>
-        :
-        <Loading />
-      }
+      <Movies 
+      movies = {movies}
+      updateSetMovies = {updateSetMovies}
+      updateSelectedMovie = {updateSelectedMovie}
+      selectedMovie = {selectedMovie}
+      />
     </div>
   )
 }
