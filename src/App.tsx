@@ -6,6 +6,7 @@ import MovieDetails from './features/movies/components/MovieDetails/MovieDetails
 import MovieList from './features/movies/components/MovieList/MovieList';
 import { Movie } from './features/movies/models/Movie'
 import { apiMovieMap, urlApiMovies } from './conf/api.movies'
+import SearchBar from './features/movies/components/SearchBar/SearchBar';
 
 function App() {
   const movieVide: Movie = 
@@ -33,6 +34,10 @@ function App() {
 
   useEffect(getData, []);
 
+  function updateSetMovies(movies : Movie[]) {
+    setMovies(movies)
+  }
+
   function updateSelectedMovie(movie: Movie) {
     setSelectedMovie(movie)
   }
@@ -42,6 +47,9 @@ function App() {
       <Header />
       {movies.length ?
         <>
+          <div className="d-flex justify-content-center p-4">
+            <SearchBar updateSetMovies = {updateSetMovies}/>
+          </div>
           <MovieList movies={movies} updateSelectedMovie={updateSelectedMovie} />
           <MovieDetails selectedMovie={selectedMovie} />
         </>

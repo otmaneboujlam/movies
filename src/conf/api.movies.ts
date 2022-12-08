@@ -12,8 +12,8 @@ export const urlApiMovies = axios.create({
 });
 
 urlApiMovies.interceptors.request.use((req: any) => {
-  req.headers['Authorization'] = "Bearer " + API_TOKEN;
-  return req;
+  req.headers['Authorization'] = "Bearer " + API_TOKEN
+  return req
 })
 
 export const apiMovieMap = (moviesFromAPI: any[]) => moviesFromAPI.map((m: any) => new Movie(
@@ -22,4 +22,6 @@ export const apiMovieMap = (moviesFromAPI: any[]) => moviesFromAPI.map((m: any) 
     `${m.release_date} | ${m.vote_average} (${m.vote_count})`,
     m.overview,
     `https://image.tmdb.org/t/p/w500${m.poster_path}`
-  ));
+  ))
+
+  
