@@ -1,10 +1,10 @@
+import { NavLink } from 'react-router-dom'
 import './Nav.module.scss'
 
 function Nav() {
     return (
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
             <div className="container-fluid">
-
                 <a href="/" className="navbar-brand">Filmothèque</a>
                 <button
                     className="navbar-toggler"
@@ -16,10 +16,10 @@ function Nav() {
                 <div id="main-nav" className="collapse navbar-collapse">
                     <ul className="nav">
                         <li className="nav-item">
-                            <a href="/" className="nav-link active">Catalogue</a>
+                            <NavLink to="/movies" className="nav-link">Catalogue</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a href="/" className="nav-link active">A voir</a>
+                            <NavLink to="/favorites" className="nav-link">A voir</NavLink>
                         </li>
                     </ul>
                 </div>
